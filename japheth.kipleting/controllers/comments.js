@@ -75,7 +75,7 @@ export const deleteComment = async (req, res) => {
     try {
         const {  comment_id } = req.params;
         let pool = await sql.connect(config.sql)
-        const deleteComments=await pool.request()         
+        await pool.request()         
             .query(`delete from comments where comment_id=${comment_id}`)
         res.status(200).json({ message: 'comment was deleted successfully' })
     } catch (error) {
