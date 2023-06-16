@@ -76,7 +76,7 @@ export const deletePerson = async (req, res) => {
         const {  person_id } = req.params;
         let pool = await sql.connect(config.sql)
         await pool.request()         
-            .query(`delete from people where username=${person_id}`)
+            .query(`delete from people where person_id=${person_id}`)
         res.status(200).json({ message: 'person was deleted successfully' })
     } catch (error) {
         res.status(200).json(error);
